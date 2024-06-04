@@ -1,0 +1,23 @@
+<header id="header" *ngIf="userProfile">
+    <!-- Component Header -->
+    <div class="logo">
+        <img src="../../assets/images/logo.jpg" alt="" class="logo_img">
+        <h2 class="logo_text">WeShare</h2>
+    </div>
+    <div class="search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search" class="search_input">
+        <i class="bi bi-x-lg"></i>
+    </div>
+    <div class="account">
+        <i class="bi bi-bell"></i>
+        <i class="bi bi-bookmark"></i>
+        <img (click)="showMenu()" class="show-menu" [src]="userProfile.picture_url ? '../../assets/images/' + userProfile.picture_url : '../../assets/images/avatar.jpg'" alt="">
+            <ul class="menu_acount">
+                <li><img [src]="userProfile.picture_url ? '../../assets/images/' + userProfile.picture_url : '../../assets/images/avatar.jpg'" alt=""><a routerLink="/profile/{{userProfile.id_user}}">{{userProfile.full_name}}</a></li>
+                <li><i class="bi bi-arrow-repeat"></i><a routerLink="/reset-password">Change Password</a></li>
+                <li><i class="bi bi-cloud-plus"></i><a routerLink="/update-profile">Update Infomation</a></li>
+                <li><button class="btn" (click)="logout()">Logout</button></li>
+            </ul>        
+    </div>
+</header>

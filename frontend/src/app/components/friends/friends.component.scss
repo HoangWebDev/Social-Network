@@ -1,0 +1,56 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+/* friends.component.scss */
+.main {
+  width: calc(100% - 58rem);
+  position: fixed;
+  top: 6rem;
+  left: 29rem;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  &_friends {
+    padding: 20px;
+
+    &_list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      .friend_item {
+        width: calc(25% - 2rem);
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $bg-container;
+        text-align: center;
+
+        img {
+          display: block;
+          // width: 80%;          
+          border-radius: 1rem;
+        }
+
+        button {
+          padding: 1rem;
+        }
+
+        button.delete {
+          background-color: $cl-text;
+
+          &:hover {
+            box-shadow: 0 0 .5rem $cl-text;
+          }
+        }
+      }
+    }
+  }
+}

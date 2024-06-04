@@ -1,0 +1,49 @@
+<section class="contact">
+    <!-- Component Contact -->
+    <div class="contact_message">
+        <div class="contact_message--title">
+            <h2>Message</h2>
+            <div class="input">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Search">
+                <i class="bi bi-filter"></i>
+            </div>
+        </div>
+        <div class="contact_message--contact">
+            <h2 class="contact_person">Contact Person</h2>
+            <div class="contact_person--list">
+                <ul>                   
+                    <li *ngFor="let user of users">
+                        <a routerLink="/profile/{{user.id_user}}">
+                            <img [src]="user.picture_url ? '../../assets/images/' + user.picture_url : '../../assets/images/avatar.jpg'"
+                                alt="">
+                            <span>
+                            </span>
+                            <h3>{{user.full_name}}</h3>
+                        </a>
+                    </li>
+                </ul>
+                <div class="contact_person--viewall">
+                    <p>View All</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact_events">
+        <div class="contact_events--title">
+            <div class="event_title">
+                <h2>Events</h2>
+                <i class="bi bi-three-dots-vertical"></i>
+            </div>
+        </div>
+        <hr>
+        <div class="contact_events--contact">
+            <ul>
+                <li>
+                    <i class="bi bi-cake2"></i>
+                    <p>Sinh Nhật Tí Trần</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

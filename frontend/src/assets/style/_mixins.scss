@@ -1,0 +1,60 @@
+/* Flex Box Align */
+@mixin fl-al-center{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+/* Grid Layout */
+@mixin gr-layout{
+    display: grid;
+    grid-template-columns: 25rem auto 25rem;
+    column-gap: 2rem;
+    padding: 0 2rem;
+}
+
+/* Layout Nav */
+@mixin layout-nav{
+    background-color: $bg-container;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+}
+
+/* Input */
+@mixin input{
+    padding: .8rem .8rem .8rem 2.8rem;
+    border-radius: .5rem;
+    border: none;            
+    outline: none;
+    background-color:$cl-text-light;
+}
+
+/* Scroll Bar */
+@mixin scrollBar{
+    &::-webkit-scrollbar {
+        width: .7rem;                     
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: $cl-text;
+        border-radius: .5rem;
+    }
+}
+
+/* Img width height 5rem */
+@mixin img-5rem{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+/* Img width height 2rem */
+@mixin img-3rem{
+    width: 3rem;height: 3rem;
+    border-radius: 50%;
+}

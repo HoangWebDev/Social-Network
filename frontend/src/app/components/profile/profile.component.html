@@ -1,0 +1,126 @@
+<section class="main"  *ngIf="user as users">
+    <!-- Component Main -->
+    <div class="main_profile">
+        <div class="main_profile--cover">
+            <img src="../../assets/images/avatar.jpg" alt="">
+        </div>
+        <div class="main_profile--avatar">
+            <div class="profile_avatar--img">
+                <img [src]="users.picture_url ? '../../assets/images/' + users.picture_url : '../../assets/images/avatar.jpg'" alt="">
+            </div>
+            <div class="profile_avatar--name">
+                <h1>{{users.full_name}}</h1>
+                <p>15 bạn</p>
+            </div>
+        </div>
+    </div>
+    <div class="main_profile">       
+        <div class="main_profile--input">
+            <img [src]="users.picture_url ? '../../assets/images/' + users.picture_url : '../../assets/images/avatar.jpg'" alt="">
+            <input type="text" placeholder="What's on your mind, Huỳnh Hoàng?">
+            <button>Post</button>
+        </div>
+        <hr>
+        <div class="main_profile--item">
+            <div>
+                <i class="bi bi-camera-video"></i>
+                <p>Live Video</p>
+            </div>
+            <div>
+                <i class="bi bi-card-image"></i>
+                <p>Image/Video</p>
+            </div>
+            <div>
+                <i class="bi bi-paperclip"></i>
+                <p>Attachment</p>
+            </div>
+        </div>
+    </div>
+    <div class="main_status">        
+        <!-- Show Posts -->
+        <div class="main_status--item" *ngFor="let posts of posts">
+            <div class="profile">
+                <a routerLink="/profile/{{posts.id_user}}" class="status_profile">
+                    <img [src]="users.picture_url ? '../../assets/images/' + users.picture_url : '../../assets/images/avatar.jpg'"
+                        alt="">
+                    <div class="info_profile">
+                        <h3>{{users.full_name}}</h3>
+                        <p>{{posts.created_at | date:'fullDate'}}</p>
+                    </div>
+                </a>
+                <div class="close_posts" >
+                    <i class="bi bi-three-dots" (click)="showAction($event)"></i>
+                    <ul class="list_action--posts">                        
+                        <li (click)="removePosts(posts.id_posts!, users.id_user!)"><i class="bi bi-x-lg"></i>Delete post</li>
+                        <li (click)="openModel(posts.id_posts!)"><i class="bi bi-file-post"></i>Update post</li>                               
+                    </ul>
+                </div>
+            </div>
+            <div class="status_content">
+                {{posts.content}}
+            </div>
+            <div class="status_post">
+                <img *ngIf="posts.image" [src]="'../../assets/images/' + posts.image" alt="">
+            </div>
+            <hr>
+            <div class="status_icon">
+                <div class="status_icon--item heart" (click)="likePost(posts.id_posts!)">
+                    <span><i class="bi bi-heart"></i> {{ (like[posts.id_posts!] ? like[posts.id_posts!].like_count:0) || 0 }} Like</span>
+                </div>
+                <div class="status_icon--item status_icon--comment" *ngIf="commentsByPost[posts.id_posts!]"
+                    (click)="showComment($event)">
+                    <span><i class="bi bi-chat"></i> {{ (commentsByPost[posts.id_posts!] ? commentsByPost[posts.id_posts!].length:0) || 0 }} Comment </span>
+                </div>
+                <div class="status_icon--item share">
+                    <span> <i class="bi bi-share"></i> 10 Share</span>
+                </div>
+            </div>    
+            <div class="model_comment">
+                <hr>
+                <div class="model_comment--inner">
+                    <div class="model_comment--main" *ngIf="commentsByPost[posts.id_posts!]">
+                        <div *ngFor="let comment of commentsByPost[posts.id_posts!]">
+                            <!-- <img [src]="users[comment.id_user]?.picture_url ? '../../assets/images/' + users[comment.id_user]?.picture_url : '../../assets/images/avatar.jpg'"
+                                alt=""> -->
+                                <img src="../../assets/images/avatar.jpg" alt="">
+                            <div class="comment">
+                                <!-- <div class="comment-author">{{ users[comment.id_user]?.full_name }}</div> -->
+                                <div class="comment-author">Huỳnh Hoàng</div>
+                                <div class="comment-content">{{ comment.content }}</div>
+                                <div class="comment-date">{{ comment.created_at | date:'short' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model_comment--content" *ngIf="userProfile">
+                        <img [src]="userProfile.picture_url ? '../../assets/images/' + userProfile.picture_url : '../../assets/images/avatar.jpg'"
+                            alt="">
+                        <!-- Form để thêm một bình luận mới -->
+                        <form [formGroup]="formComment" (ngSubmit)="addComment(posts.id_posts!)" class="content">
+                            <input type="text" formControlName="content" class="content--input" placeholder="Write a comment...">
+                            <button class="content--btn" type="submit">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="update_posts--model" *ngIf="postsId">
+        <div class="update_posts--model--title">
+            <h3>Update Posts</h3>
+            <i class="bi bi-x close_model" (click)="closeModel()"></i>
+        </div>
+        <hr>
+        <div class="update_posts--model--profile" *ngIf="userProfile">
+            <img [src]="users.picture_url ? '../../assets/images/' + users.picture_url : '../../assets/images/avatar.jpg'"
+                alt="">
+            <h3>{{users.full_name}}</h3>
+        </div>
+        <form [formGroup]="formPosts" (ngSubmit)="updatePosts(users.id_user!, postsId.id_posts!)"
+            class="update_posts--model--form">
+            <input type="text" placeholder="What's on your mind, {{users.full_name}}?" formControlName="content" [value]="postsId.content">
+            <input type="text" class="img" placeholder="Image" formControlName="image" [value]="postsId.image ? postsId.image : ''">
+            <button type="submit">Posts</button>
+        </form>
+    </div>
+    <div class="overlay" (click)="closeModel()"></div>
+</section>

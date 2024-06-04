@@ -1,0 +1,71 @@
+<div id="wrap-container">
+    <div id="form-login">
+        <a routerLink="/login" class="close_login"><i class="bi bi-x-circle"></i></a>
+        <h1>Đăng Ký</h1>
+        <form method="post" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="full_name" class="title">Full name:</label> <br />
+                <div class="box-group">
+                    <input type="text" formControlName="full_name" class="input full_name" placeholder=" "
+                        autocomplete="off" />
+                    <label class="label">Full name</label>
+                </div>
+            </div>
+            <small *ngIf="full_name.invalid && (full_name.dirty || full_name.touched)">
+                <div *ngIf="full_name.errors?.['required']">Full name is required</div>
+                <div *ngIf="full_name.errors?.['pattern']">Full name is not valid</div>
+                <div *ngIf="full_name.errors?.['minlength']">Full name must be at least 6 characters</div>
+            </small>
+            <div class="form-group">
+                <label for="email" class="title">Email:</label> <br />
+                <div class="box-group">
+                    <input type="email" formControlName="email" class="input email" placeholder=" "
+                        autocomplete="off" />
+                    <label class="label">Email</label>
+                </div>
+            </div>
+            <small *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Email is not valid</div>
+            </small>
+            <div class="form-group">
+                <label for="text" class="title">Username:</label> <br />
+                <div class="box-group">
+                    <input type="text" formControlName="username" class="input username" placeholder=" "
+                        autocomplete="off" />
+                    <label class="label">Username</label>
+                </div>
+            </div>
+            <small *ngIf="username.invalid && (username.dirty || username.touched)">
+                <div *ngIf="username.errors?.['required']">Username is required</div>
+            </small>
+            <div class="form-group">
+                <label for="pass" class="title">Password:</label> <br />
+                <div class="box-group">
+                    <input type="password" formControlName="password" class="input password" placeholder=" "
+                        autocomplete="off" />
+                    <label class="label">Password</label>
+                </div>
+            </div>
+            <small *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']">Password is required</div>
+                <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
+            </small>
+            <div class="form-group">
+                <label for="password" class="title">Confirm password:</label> <br />
+                <div class="box-group">
+                    <input type="password" formControlName="confirm_password" class="input confirm_password"
+                        placeholder=" " autocomplete="off" />
+                    <label class="label">Confirm password</label>
+                </div>
+            </div>
+            <small
+            *ngIf="confirm_password.errors?.['passwordsMatch'] && (confirm_password.dirty || confirm_password.touched)">            
+            Passwords do not match
+            </small>
+            <div class="button">
+                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

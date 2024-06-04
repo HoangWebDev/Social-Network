@@ -1,0 +1,378 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+.main {
+    width: calc(100% - 58rem);
+    position: fixed;
+    top: 6rem;
+    left: 29rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+    @include scrollBar;
+
+    &_story {
+        @include fl-al-center;
+        padding: 1.5rem;
+        background-color: $bg-container;
+        border-radius: 1rem;
+
+        &--item {
+            position: relative;
+            text-align: center;
+
+            img:not(.story_me) {
+                border: .3rem solid $cl-text;
+                padding: .2rem;
+                border-radius: 50%;
+                width: 10rem;
+                height: 10rem;
+            }
+
+            img:first-child {
+                padding: .2rem;
+                border-radius: 50%;
+                width: 10rem;
+                height: 10rem;
+            }
+
+            img.active {
+                border-color: blue;
+            }
+
+            i {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                font-size: 2.5rem;
+                position: absolute;
+                color: rgb(255, 255, 255);
+                background-color: rgb(12, 12, 249);
+                left: 50%;
+                bottom: .1rem;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+
+            p {
+                margin-top: 1rem;
+                font-size: 1rem;
+                font-weight: 600;
+                color: $cl-text;
+            }
+        }
+    }
+
+    &_post {
+        padding: 1rem;
+        background-color: $bg-container;
+        border-radius: 1rem;
+        margin-top: 1rem;
+
+        &--input {
+            @include fl-al-center;
+
+            img {
+                @include img-5rem;
+            }
+
+            p {
+                cursor: pointer;
+                width: 100%;
+                padding: .8rem .8rem .8rem 2.8rem;
+                border-radius: .5rem;
+                background-color: $cl-text-light;
+                transition: all .5s;
+                color: $cl-text;
+
+                &:focus {
+                    box-shadow: 0 0 .5rem $cl-main;
+                }
+
+                font-size: 1.3rem;
+            }
+
+            .main_posts--model {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $bg-container;
+                border-radius: 1rem;
+                z-index: 100;
+                display: none;
+
+                &--title {
+                    @include fl-al-center;
+                    justify-content: space-between;
+                    padding: 1rem;
+
+                    h3 {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #000;
+                    }
+
+                    i {
+                        font-size: 1.8rem;
+                        color: $cl-text;
+                        cursor: pointer;
+                    }
+                }
+
+                &--profile {
+                    @include fl-al-center;
+                    padding: 1rem;
+
+                    img {
+                        @include img-5rem;
+                    }
+
+                    h3 {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #000;
+                    }
+                }
+
+                &--form {
+                    padding: 1rem;
+
+                    input {
+                        border: none;
+                        outline: none;
+                        width: 100%;
+                        padding: .8rem .8rem .8rem 2.8rem;
+                        border-radius: .5rem;
+                        background-color: $bg-container;
+                        transition: all .5s;
+                        color: $cl-text;
+                    }
+
+                    .img {
+                        margin-top: 1rem;
+                        border: .1rem solid $cl-text-light;
+                    }
+
+                    button {
+                        width: 100%;
+                        padding: .8rem .8rem .8rem 2.8rem;
+                        border-radius: .5rem;
+                        background-color: $cl-text-light;
+                        transition: all .5s;
+                        color: $cl-text;
+
+                        &:focus {
+                            box-shadow: 0 0 .5rem $cl-main;
+                        }
+                    }
+                }
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: $cl-icon;
+                visibility: visible;
+                opacity: 0.7;
+                z-index: 99;
+                display: none;
+            }
+
+            .active {
+                display: block;
+            }
+        }
+
+        &--item {
+            padding-top: 1rem;
+            display: flex;
+            justify-content: start;
+            column-gap: 5rem;
+
+            div {
+                display: flex;
+                column-gap: 1rem;
+
+                i {
+                    font-size: 1.8rem;
+                }
+
+                p {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    color: $cl-text;
+                }
+            }
+
+            div:first-child i {
+                color: $cl-danger;
+            }
+
+            div:nth-child(2) i {
+                color: $cl-success;
+            }
+
+            div:last-child i {
+                color: $cl-primary;
+            }
+        }
+    }
+
+    &_status {
+        margin: 1rem 0 2rem;
+
+        &--item {
+            background-color: $bg-container;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+
+            .profile {
+                display: flex;
+                justify-content: space-between;
+
+                .close_posts {
+                    cursor: pointer;
+
+                    i {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            .status_profile {
+                color: #000;
+                @include fl-al-center;
+                column-gap: 1rem;
+
+                img {
+                    @include img-5rem;
+                }
+
+                .info_profile {
+                    h3 {
+                        font-size: 1.5rem;
+                        margin-bottom: .5rem;
+                    }
+                }
+            }
+
+            .status_content {
+                font-size: 1.5rem;
+                margin-top: 1rem;
+                color: $cl-text;
+                font-weight: 600;
+            }
+
+            .status_post {
+                margin-top: 1rem;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .status_icon {
+                @include fl-al-center;
+
+                &--item {
+                    cursor: pointer;
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        column-gap: .5rem;
+                    }
+
+                    color: $cl-text;
+
+                    i {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .like {
+                    color: $cl-danger;
+                }
+            }
+
+            .model_comment {
+                display: none;
+                margin-bottom: .5rem;
+
+                &--inner {
+                    .model_comment--main {
+                        margin-bottom: .5rem;
+                        @include fl-al-center;
+                        flex-direction: column;
+                        row-gap: 1rem;
+                        align-items: start;
+
+                        div {
+                            display: flex;
+                            column-gap: .5rem
+                        }
+
+                        img {
+                            @include img-3rem;
+                        }
+
+                        .comment {
+                            border-radius: .5rem;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: .5rem;
+                            padding: .5rem;
+                            background-color: $cl-icon;
+                            color: $bg-container;
+                        }
+                    }
+
+                    .model_comment--content {
+                        @include fl-al-center;
+                        align-items: start;
+
+                        img {
+                            @include img-3rem;
+                        }
+
+                        .content {
+                            @include fl-al-center;
+
+                            &--input {
+                                padding: 1rem;
+                                width: 100%;
+                                background-color: $cl-icon;
+                                color: $bg-container;
+                                border-radius: 1rem;
+                                border: none;
+                                outline: none;
+
+                                &::placeholder {
+                                    color: $cl-text;
+                                }
+                            }
+
+                            &--btn {
+                                border-radius: 1rem;
+                                padding: .9rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .comment_active {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+<section class="nav">
+    <!-- Component Nav -->
+<div class="nav_profile">
+    <div *ngIf="userProfile">
+        <div class="nav_profile--logo">
+            <img [src]="userProfile.picture_url ? '../../assets/images/' + userProfile.picture_url : '../../assets/images/avatar.jpg'"
+                alt="">
+            <div>
+                <h2>{{userProfile.full_name}}</h2>                
+            </div>
+        </div>
+        <div class="nav_profile--flow">
+            <div>
+                <p>2.3k</p>
+                <span>Followers</span>
+            </div>
+            <div>
+                <p>1.2k</p>
+                <span>Following</span>
+            </div>
+            <div>
+                <p>1.2k</p>
+                <span>Posts</span>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="nav_menu">
+    <li class="nav_menu--item feed active" [class.active]="activeMenu === 'feed'" (click)="setActive('feed')">
+        <a routerLink="posts">
+            <i class="bi bi-house"></i>
+            <p>Feed</p>
+        </a>
+    </li>
+    <li class="nav_menu--item friends"  [class.active]="activeMenu === 'friends'" (click)="setActive('friends')">
+        <a routerLink="friends">
+            <i class="bi bi-people"></i>
+            <p>Friends</p>
+        </a>
+    </li>
+    <li class="nav_menu--item event" [class.active]="activeMenu === 'event'" (click)="setActive('event')">
+        <a routerLink="event">
+            <i class="bi bi-calendar-event"></i>
+            <p>Event</p>
+        </a>
+    </li>
+    <li class="nav_menu--item watch" [class.active]="activeMenu === 'watch'" (click)="setActive('watch')">
+        <a routerLink="">
+            <i class="bi bi-camera-reels"></i>
+            <p>Watch</p>
+        </a>
+    </li>
+    <li class="nav_menu--item photos" [class.active]="activeMenu === 'photos'" (click)="setActive('photos')">
+        <a routerLink="">    
+            <i class="bi bi-images"></i>
+            <p>Photos</p>
+        </a>
+    </li>
+    <li class="nav_menu--item merket" [class.active]="activeMenu === 'merket'" (click)="setActive('merket')">
+        <a routerLink="">
+            <i class="bi bi-shop"></i>
+            <p>Merket</p>
+        </a>
+    </li>
+    <li class="nav_menu--item files" [class.active]="activeMenu === 'files'" (click)="setActive('files')">
+        <a routerLink="">
+            <i class="bi bi-folder"></i>
+            <p>Files</p>
+        </a>
+    </li>            
+    <hr>  
+    <h2>Pages You Like</h2>                                        
+    <ul>
+        <li class="nav_menu--item">
+            <a routerLink="">
+                <i class="bi bi-code"></i>
+                <p>Frontend Web</p>
+            </a>
+        </li>  
+    </ul>                      
+</ul>
+</section>

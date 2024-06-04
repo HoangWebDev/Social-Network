@@ -1,0 +1,154 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+#wrap-container {
+    width: 100%;
+    height: 80%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-login {
+    max-width: 50rem;
+    background-color: transparent;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 1rem .1rem #525151;
+    position: relative;
+}
+
+.close_login {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    i {
+        font-size: 2rem;
+        transition: .3s;
+
+        &:hover {
+            color: $cl-main;
+        }
+    }
+}
+
+#form-login h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 1rem 0 2rem;
+}
+
+.form-group .title {
+    display: inline-block;
+    margin: 1.4rem 0;
+    font-size: 1.5rem;
+}
+
+.form-group .input:focus {
+    border-color: $cl-main;
+}
+
+.form-group {
+    text-align: left;
+    color: black;
+}
+
+.form-group .input {
+    width: 40rem;
+    border: none;
+    border-bottom: 1px solid $cl-main;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group .box-group {
+    position: relative;
+}
+
+.form-group .label {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 12px;
+    color: $cl-main;
+    transition: all 0.5s ease;
+}
+
+.form-group .input:not(:placeholder-shown)+.label,
+.input:focus+.label {
+    top: -1rem;
+    scale: 0.9;
+    padding: 0 .5px;
+    color: $cl-main;
+    background-color: transparent;
+}
+
+.input:hover,
+.input:focus {
+    border-bottom: .1rem solid $cl-main;
+}
+
+.input:hover+.label {
+    color: $cl-main;
+}
+
+.button {
+    text-align: center;
+
+    button {
+        width: 20rem;
+        padding: 1rem;
+        margin: 1rem;
+        font-size: 1.4rem;
+        color: #ffffff;
+        border-radius: 1rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+    }
+
+    button:hover {
+        filter: brightness(1.2);
+        color: rgb(255, 255, 255);
+    }
+}
+
+small {
+    font-size: 1.2rem;
+    color: $cl-danger;
+}
+
+/* Responsive */
+/* Mobile: Responsive */
+@media only screen and (max-width: 739px) {
+    #form-login h1 {
+        font-size: 2.5rem;
+    }
+
+    .form-group .input {
+        width: 30rem;
+    }
+}
+
+/* Tablet: Responsive */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    body {
+        height: 100%;
+    }
+
+    #form-login h1 {
+        font-size: 2rem;
+    }
+
+    .form-group .input {
+        width: 28rem;
+    }
+}
+
+/* PC: Responsive */
+@media only screen and (min-width: 1024px) {}

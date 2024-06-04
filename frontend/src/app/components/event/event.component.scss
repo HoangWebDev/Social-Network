@@ -1,0 +1,65 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+/* events.component.scss */
+.main {
+  width: calc(100% - 58rem);
+  position: fixed;
+  top: 6rem;
+  left: 29rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  h1{
+    font-size: 2rem;
+  }
+  &_events {
+    padding: 20px;
+    &_list {
+      display: flex;          
+      flex-wrap: wrap;    
+      gap: 2rem;  
+      .event_item {      
+        position: relative;
+        width: calc(33.33% - 2rem); 
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;        
+        background-color: $bg-container;
+        .date{
+            position: absolute;
+            right: 3rem;
+            bottom: 6rem;
+            background-color: $cl-text-light;
+            padding: 3rem 2rem;
+            border-radius: .5rem;
+        }
+        p{
+            margin-top: 3rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $cl-success;
+        }
+        h2{
+            font-size: 1.7rem;
+        }  
+        img{
+            display: block;
+            // width: 80%;          
+            border-radius: 1rem;
+        }
+        button{
+            padding: 1rem;
+        }
+        button.delete{
+            background-color: $cl-text;
+            &:hover{
+                box-shadow: 0 0 .5rem $cl-text;
+            }
+        }
+      }
+    }
+  }
+}

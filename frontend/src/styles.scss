@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/style/base";
+@import "./assets/style/variables";
+@import "./assets/style/mixins";
+
+/* Button Action */
+button{
+    // width: calc(100% - 85%);
+    padding: .7rem;
+    border-radius: .5rem;
+    border: .1rem solid #000;                    
+    background-color: $cl-main;
+    color: $bg-container;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+        background-color: #172ced;
+        box-shadow: 0 0 .5rem $cl-main;
+    }
+}

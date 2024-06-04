@@ -1,0 +1,120 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+/* Header */
+#header{
+    @include gr-layout;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $bg-container;
+    z-index: 10;    
+    .logo{
+        @include fl-al-center;        
+        width: 5rem;        
+        height: 5rem;
+        img{
+            width: 80%;
+            border-radius: .5rem;
+        }
+        h2{
+            font-size: 2rem;
+        }
+    }
+    .search{
+        @include fl-al-center;
+        position: relative;
+        padding: 0 2rem;
+        i:first-child{
+            position: absolute;
+            left: 2.5rem;
+            padding: .5rem;
+            z-index: 10 ;
+        }
+        input{
+            @include input;
+            position: absolute;
+            left: 2rem;
+            right: 2rem;
+            transition: all .5s;
+            &:focus{
+                box-shadow: 0 0 .5rem $cl-main;
+            }
+            &:focus ~ i:last-child{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        i:last-child{
+            position: absolute;
+            right: 2.5rem;
+            padding: .5rem;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 10 ;
+        }
+    }
+    .account{
+        @include fl-al-center;
+        justify-content: flex-end;
+        i{
+            border-radius: .5rem;
+            font-size: 2rem;
+            padding: .5rem;
+            background-color: $cl-text-light;
+            color: $cl-icon;
+        }
+        img{
+            border-radius: .5rem;
+            width: 3rem;            
+            height: 3rem;
+        }        
+        .show-menu{
+            cursor: pointer;
+        }
+        .menu_acount{
+            opacity: 0;
+            visibility: hidden;
+            
+            padding: 1rem;
+            position: absolute;
+            top: 5rem;
+            right: 1rem;            
+            background-color: $cl-text-light;
+            border-radius: .5rem;     
+            li{
+                @include fl-al-center;                
+                padding: .5rem;
+                border-radius: .5rem;
+                color: $cl-text;
+                transition: all .3s;               
+                i{
+                    font-size: 1.5rem;
+                    font-weight: 600;    
+                    transition: all .3s;               
+                }
+                &:hover:not(:last-child){
+                    background-color: $bg-container;
+                }                
+                &:hover i{
+                    color: $cl-main;
+                    background-color: $bg-container;
+                }
+                a{                       
+                    font-size: 1.3rem;                 
+                    font-weight: 600;
+                    color: $cl-text;
+                    &:hover{
+                        color: $cl-main;
+                    }
+                }
+            }    
+        }
+        .active{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

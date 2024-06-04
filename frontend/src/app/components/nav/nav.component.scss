@@ -1,0 +1,120 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/variables";
+@import "../../../assets/style/mixins";
+
+.nav{                 
+    width: 25rem;       
+    position: fixed;  
+        top: 6rem;     
+        left: 2rem;
+        max-height: 100vh;
+        overflow-y: auto; 
+        @include scrollBar;
+    &_profile{
+        @include layout-nav;          
+        border-radius: 1rem;  
+        div{
+            background-color: $cl-text-light;                  
+            border-radius: .5rem;
+            padding: .5rem;            
+        }
+        &--logo{
+            @include fl-al-center;
+            justify-content: center;
+            img{
+                border-radius: .5rem;
+                width: 5rem;        
+                height: 5rem;
+            }
+            i{
+                border-radius: .5rem;
+                font-size: 5rem;
+                padding: .5rem;
+                background-color: $cl-text-light;
+                color: $cl-icon;
+            }
+            div{
+                span{
+                    color: $cl-text;
+                }
+            }
+        }
+        &--flow{
+            @include fl-al-center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            div{
+                p{
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+                span{
+                    color: $cl-text;
+                }
+            }
+        }
+    }
+    &_menu{
+        @include layout-nav;
+        border-radius: 1rem;
+        &--item{
+            a{                        
+                @include fl-al-center;                        
+                padding: 1rem;
+                border-radius: .5rem;
+                color: $cl-text;
+                width: 100%;
+                i{
+                    font-size: 1.5rem;
+                }
+                p{
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                }                    
+            }
+        }
+        .active a{
+            background-color: $cl-main;
+            color: $bg-container;
+        }
+        h2{
+            padding: 1rem;
+        color: $cl-text;
+        }
+        ul{
+            li{
+                i{
+                    padding: .5rem;
+                    border-radius: .5rem;
+                    color: $cl-text-light;
+                    background-color: $cl-main;
+                }
+                p{
+                    color: #000;
+                    font-weight: 600;
+                }
+            }
+        }
+    }        
+    &_pages{
+        @include layout-nav;
+        border-radius: 1rem;
+        &--item{
+            @include fl-al-center;
+            padding: 1rem;
+            color: $cl-text;
+            border-radius: .5rem;
+            i{
+                font-size: 1.5rem;
+            }
+            p{
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+        }
+        .active{
+            background-color: $cl-main;
+            color: $bg-container;
+        }
+    }     
+}

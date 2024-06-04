@@ -1,0 +1,17 @@
+<!-- friends.component.html -->
+<section class="main">
+    <h1>Friends</h1>
+    <!-- Component Main -->
+    <div class="main_friends">
+        <!-- Tạo một danh sách bạn bè -->
+        <div class="main_friends_list">
+            <a routerLink="/profile/{{user.id_user}}" class="friend_item" *ngFor="let user of users">
+                <img [src]="user.picture_url ? '../../assets/images/' + user.picture_url : '../../assets/images/avatar.jpg'"
+                    alt="Friend 1">
+                <h2>{{user.full_name}}</h2>
+                <button>Thêm bạn</button>
+                <button class="delete">Xóa</button>
+            </a>
+        </div>
+    </div>
+</section>
