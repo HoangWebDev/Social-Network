@@ -16,7 +16,7 @@ export class PostsService {
   /* Các phường thức khác */
   getPosts(): Observable<PostsModel[]> {
     // Lấy token từ sessionStorage
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     // Kiểm tra nếu token tồn tại
     if (token) {
       // Tạo HttpHeaders và thêm token vào Authorization header

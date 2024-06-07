@@ -1,5 +1,6 @@
 const Posts = require('../models/PostsModel.js');
 const Comments = require('../models/CommentModel.js');
+const Likes = require('../models/LikeModel.js');
 class PostsController {
     async getPosts(req, res) {
         try {
@@ -86,6 +87,13 @@ class PostsController {
                         id_posts: id_posts
                     }
                 });
+
+                await Likes.destroy({
+                    where: {
+                        id_posts: id_posts
+                    }
+                });
+
                 // Sau đó mới xóa post
                 await Posts.destroy({
                     where: {

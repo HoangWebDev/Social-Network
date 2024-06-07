@@ -21,7 +21,7 @@ export class UserService {
 
   getUserProfile(): Observable<UserModel> {
     // Lấy token từ localStorage
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     // Kiểm tra nếu token tồn tại
     if (token) {

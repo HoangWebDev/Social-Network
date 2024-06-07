@@ -43,7 +43,9 @@ export class LoginComponent {
       if (username && password) {
         this.loginService.login(username, password).subscribe({
           next: (response: any) => {
-            sessionStorage.setItem('token', response.token); // Lưu token vào sessionStorage
+            console.log(response);
+
+            localStorage.setItem('token', response.token); // Lưu token vào sessionStorage
             alert("Đăng nhập thanh cong!");
             this.router.navigate(['/posts']); // Điều hướng người dùng về trang chính                    
           },

@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   logout() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
     location.reload()
   }
 

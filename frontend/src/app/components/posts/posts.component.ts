@@ -135,7 +135,6 @@ export class PostsComponent implements OnInit {
       this.postsService.addPosts(newPosts).subscribe({
         next: (next) => {
           console.log(next);
-          window.location.reload();
           this.getPosts();
         },
         error: (error) => {
@@ -155,7 +154,7 @@ export class PostsComponent implements OnInit {
     this.postsService.deletePosts(id_posts).subscribe({
       next: (next) => {
         console.log(next);
-        window.location.reload();
+        this.getPosts();
       },
       error: (error) => {
         console.error('Remove post thất bị', error);
